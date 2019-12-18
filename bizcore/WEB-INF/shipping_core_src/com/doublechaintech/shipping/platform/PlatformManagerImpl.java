@@ -314,7 +314,7 @@ public class PlatformManagerImpl extends CustomShippingCheckerManager implements
 	protected Map<String,Object> viewTokens(){
 		return tokens().allTokens()
 		.sortProfileListWith("id","desc")
-		.done();
+		.analyzeAllLists().done();
 
 	}
 	protected Map<String,Object> mergedAllTokens(String []tokens){

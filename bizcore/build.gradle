@@ -17,10 +17,10 @@ sourceSets {
         java.outputDir = file('WEB-INF/classes')
         
         java {
-            srcDirs = ['WEB-INF/caf_core_src', 'WEB-INF/caf_custom_src', 'WEB-INF/${MODELNAME}_core_src', 'WEB-INF/${MODELNAME}_custom_src']
+            srcDirs = ['WEB-INF/caf_core_src', 'WEB-INF/caf_custom_src', 'WEB-INF/shipping_core_src', 'WEB-INF/shipping_custom_src']
         }
         resources {
-            srcDirs = ['WEB-INF/caf_core_src', 'WEB-INF/caf_custom_src', 'WEB-INF/${MODELNAME}_core_src', 'WEB-INF/${MODELNAME}_custom_src']
+            srcDirs = ['WEB-INF/caf_core_src', 'WEB-INF/caf_custom_src', 'WEB-INF/shipping_core_src', 'WEB-INF/shipping_custom_src']
         }
     }
     test {
@@ -85,6 +85,20 @@ task copyJars(type: Copy) {
   from configurations.runtime
   into 'WEB-INF/lib' // 目标位置
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

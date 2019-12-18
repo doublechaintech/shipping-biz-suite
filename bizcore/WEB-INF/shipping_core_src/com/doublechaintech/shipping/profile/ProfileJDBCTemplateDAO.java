@@ -221,9 +221,8 @@ public class ProfileJDBCTemplateDAO extends ShippingNamingServiceDAO implements 
 	protected boolean isExtractShippingAddressListEnabled(Map<String,Object> options){		
  		return checkOptions(options,ProfileTokens.SHIPPING_ADDRESS_LIST);
  	}
- 	protected boolean isAnalyzeShippingAddressListEnabled(Map<String,Object> options){		
- 		return true;
- 		//return checkOptions(options,ProfileTokens.SHIPPING_ADDRESS_LIST+".analyze");
+ 	protected boolean isAnalyzeShippingAddressListEnabled(Map<String,Object> options){		 		
+ 		return ProfileTokens.of(options).analyzeShippingAddressListEnabled();
  	}
 	
 	protected boolean isSaveShippingAddressListEnabled(Map<String,Object> options){

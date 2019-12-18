@@ -38,6 +38,15 @@ public class PlatformTokens extends CommonTokens{
 	protected PlatformTokens(){
 		//ensure not initialized outside the class
 	}
+	public  static  PlatformTokens of(Map<String,Object> options){
+		//ensure not initialized outside the class
+		PlatformTokens tokens = new PlatformTokens(options);
+		return tokens;
+		
+	}
+	protected PlatformTokens(Map<String,Object> options){
+		this.options = options;
+	}
 	
 	public PlatformTokens merge(String [] tokens){
 		this.parseTokens(tokens);
@@ -81,6 +90,11 @@ public class PlatformTokens extends CommonTokens{
 	public static Map <String,Object> empty(){
 		return start().done();
 	}
+	
+	public PlatformTokens analyzeAllLists(){		
+		addSimpleOptions(ALL_LISTS_ANALYZE);
+		return this;
+	}
 
 	protected static final String PROFILE_LIST = "profileList";
 	public String getProfileList(){
@@ -96,7 +110,11 @@ public class PlatformTokens extends CommonTokens{
 	}
 	public boolean analyzeProfileListEnabled(){		
 		
-		return checkOptions(this.options(), PROFILE_LIST+".anaylze");
+		if(checkOptions(this.options(), PROFILE_LIST+".anaylze")){
+			return true; //most of the case, should call here
+		}
+		//if not true, then query for global setting
+		return checkOptions(this.options(), ALL_LISTS_ANALYZE);
 	}
 	public PlatformTokens extractMoreFromProfileList(String idsSeperatedWithComma){		
 		addSimpleOptions(PROFILE_LIST+".extractIds", idsSeperatedWithComma);

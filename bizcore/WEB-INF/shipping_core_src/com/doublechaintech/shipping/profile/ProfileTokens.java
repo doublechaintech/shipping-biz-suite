@@ -38,6 +38,15 @@ public class ProfileTokens extends CommonTokens{
 	protected ProfileTokens(){
 		//ensure not initialized outside the class
 	}
+	public  static  ProfileTokens of(Map<String,Object> options){
+		//ensure not initialized outside the class
+		ProfileTokens tokens = new ProfileTokens(options);
+		return tokens;
+		
+	}
+	protected ProfileTokens(Map<String,Object> options){
+		this.options = options;
+	}
 	
 	public ProfileTokens merge(String [] tokens){
 		this.parseTokens(tokens);
@@ -83,6 +92,11 @@ public class ProfileTokens extends CommonTokens{
 	public static Map <String,Object> empty(){
 		return start().done();
 	}
+	
+	public ProfileTokens analyzeAllLists(){		
+		addSimpleOptions(ALL_LISTS_ANALYZE);
+		return this;
+	}
 
 	protected static final String PLATFORM = "platform";
 	public String getPlatform(){
@@ -108,7 +122,11 @@ public class ProfileTokens extends CommonTokens{
 	}
 	public boolean analyzeShippingAddressListEnabled(){		
 		
-		return checkOptions(this.options(), SHIPPING_ADDRESS_LIST+".anaylze");
+		if(checkOptions(this.options(), SHIPPING_ADDRESS_LIST+".anaylze")){
+			return true; //most of the case, should call here
+		}
+		//if not true, then query for global setting
+		return checkOptions(this.options(), ALL_LISTS_ANALYZE);
 	}
 	public ProfileTokens extractMoreFromShippingAddressList(String idsSeperatedWithComma){		
 		addSimpleOptions(SHIPPING_ADDRESS_LIST+".extractIds", idsSeperatedWithComma);

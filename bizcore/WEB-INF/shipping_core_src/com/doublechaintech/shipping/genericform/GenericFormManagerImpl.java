@@ -327,7 +327,7 @@ public class GenericFormManagerImpl extends CustomShippingCheckerManager impleme
 		.sortFormFieldMessageListWith("id","desc")
 		.sortFormFieldListWith("id","desc")
 		.sortFormActionListWith("id","desc")
-		.done();
+		.analyzeAllLists().done();
 
 	}
 	protected Map<String,Object> mergedAllTokens(String []tokens){

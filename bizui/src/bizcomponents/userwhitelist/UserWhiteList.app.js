@@ -188,7 +188,7 @@ class UserWhiteListBizApp extends React.PureComponent {
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = 'Payment Services'
+    const title = 'Shipping Services'
     return title
   }
  

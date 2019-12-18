@@ -38,6 +38,15 @@ public class ShippingAddressTokens extends CommonTokens{
 	protected ShippingAddressTokens(){
 		//ensure not initialized outside the class
 	}
+	public  static  ShippingAddressTokens of(Map<String,Object> options){
+		//ensure not initialized outside the class
+		ShippingAddressTokens tokens = new ShippingAddressTokens(options);
+		return tokens;
+		
+	}
+	protected ShippingAddressTokens(Map<String,Object> options){
+		this.options = options;
+	}
 	
 	public ShippingAddressTokens merge(String [] tokens){
 		this.parseTokens(tokens);
@@ -81,6 +90,11 @@ public class ShippingAddressTokens extends CommonTokens{
 	}
 	public static Map <String,Object> empty(){
 		return start().done();
+	}
+	
+	public ShippingAddressTokens analyzeAllLists(){		
+		addSimpleOptions(ALL_LISTS_ANALYZE);
+		return this;
 	}
 
 	protected static final String PROFILE = "profile";

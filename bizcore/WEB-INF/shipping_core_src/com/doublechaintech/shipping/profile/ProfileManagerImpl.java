@@ -315,7 +315,7 @@ public class ProfileManagerImpl extends CustomShippingCheckerManager implements 
 	protected Map<String,Object> viewTokens(){
 		return tokens().allTokens()
 		.sortShippingAddressListWith("id","desc")
-		.done();
+		.analyzeAllLists().done();
 
 	}
 	protected Map<String,Object> mergedAllTokens(String []tokens){

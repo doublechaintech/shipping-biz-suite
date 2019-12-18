@@ -196,9 +196,8 @@ public class PlatformJDBCTemplateDAO extends ShippingNamingServiceDAO implements
 	protected boolean isExtractProfileListEnabled(Map<String,Object> options){		
  		return checkOptions(options,PlatformTokens.PROFILE_LIST);
  	}
- 	protected boolean isAnalyzeProfileListEnabled(Map<String,Object> options){		
- 		return true;
- 		//return checkOptions(options,PlatformTokens.PROFILE_LIST+".analyze");
+ 	protected boolean isAnalyzeProfileListEnabled(Map<String,Object> options){		 		
+ 		return PlatformTokens.of(options).analyzeProfileListEnabled();
  	}
 	
 	protected boolean isSaveProfileListEnabled(Map<String,Object> options){
